@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Shake Action App</string>
+    <string name="total_shakes">Total shakes: %1$d</string>
+    <string name="shake">shake!</string>
+</resources>
