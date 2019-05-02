@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), OnShakeListener{
         super.onResume()
         sensorManager?.registerListener(sensorListener,
                 sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-                SensorManager.SENSOR_DELAY_NORMAL)
+                SensorManager.SENSOR_DELAY_UI)
     }
 
     override fun onPause(){
