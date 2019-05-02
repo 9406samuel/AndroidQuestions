@@ -1,6 +1,6 @@
 Con base a mi experiencia:
 
-Los proyectos Android se organizan en paquetes por cada funcionalidad de la aplicación, de esta manera en cada paquete se encuentra todo lo relacionado con esa caracteristica en particular, se aisla cada funcionalidad y asi el acoplamiento/dependencia entre paquetes es minimo, se tiene mayor facilidad al navegar a traves del proyecto y se evita que la funcionalidad este regada y mezclada en toda la solución. Ya internamente, cada paquete puede estar dividido principalmente en carpetas referentes a cada capa del patrón MVP: 
+Los proyectos Android se organizan en paquetes por cada funcionalidad de la aplicación, de esta manera en cada paquete se encuentra todo lo relacionado con esa caracteristica en particular, se aisla cada funcionalidad y asi el acoplamiento/dependencia entre paquetes es minimo, se tiene mayor facilidad al navegar a traves del proyecto y se evita que la funcionalidad este regada y mezclada en toda la solución. Ya internamente, cada paquete contiene principalmente las clases/interfaces correspondientes a cada capa del patrón MVP: 
 
 CAPAS: 
 
@@ -21,5 +21,7 @@ Data:
 
 - Si se emplea Dependency injection, por ejemplo con Dagger2, toda su implementación y configuración tambien debería estar encapsulada en un paquete visto como un paquete de funcionalidad de la aplicación.
 
-- Lo mas importante es el uso de interfaces bien definidas para asi aplicar la inversión de dependencias y tener presente los principios de Clean Architecture, evitar dependencias/referencias a modulos externos desde internos.
+- Lo más importante es el uso de interfaces bien definidas para asi aplicar la inversión de dependencias y tener presente los principios de Clean Architecture, evitar dependencias/referencias a modulos externos desde internos.
+
+- Las pruebas de cada funcionalidad tambien van incluidas dentro de su paquete correspondiente, teniendo dos carpetas, una para el código de la funcionalidad y otra para el código de las pruebas del primero.
 
