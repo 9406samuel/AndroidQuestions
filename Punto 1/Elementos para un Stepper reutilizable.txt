@@ -1,64 +1,66 @@
 PASOS:
 Se deben definir los siguientes aspectos:
 
--Casos de uso del stepper dependiendo de su tipo y tipos de step que vaya a ofrecer.
+- Casos de uso del stepper dependiendo de su tipo y tipos de step que vaya a ofrecer.
 
-- Dependiendo del tipo de stepper a crearse, se debe analizar cómo va a ser la interacción (flujo del stepper) teniendo en cuenta los tipos de step, las respuestas a las acciones del usuario y la resultado de las acciones. Acorde a esta definición, se deben definir los contratos, listeners, callbacks, entre otros.
+- Dependiendo del tipo de stepper a crearse, se debe analizar cómo va a ser el workflow de éste, teniendo en cuenta la definición del punto anterior, los eventos que se disparan por las acciones del usuario y el resultado a estos eventos. Acorde a esta definición, se deben definir los contratos, listeners, callbacks, entre otros, que van a soportar este workflow reutilizable.
 
-- Elementos base (partes) que van a conformar el stepper. Se deben definir de la manera más generica y completa posible.
+- Elementos base (partes) que van a conformar el stepper. Se deben definir de la manera más generica pero completa posible. Principalmente se tienen el contenedor principal, los contenedores para los steps, botones y barra de progreso.
 
-- Modelos para los tipos de step y el stepper, con todas las propiedades que deban tener, encapsular los elementos comunes en clases padre/base.
+- Modelos para los tipos de step y el stepper, con todas las propiedades configurables que deban tener, encapsular los elementos comunes en clases padre/base.
 
-- Contratos separados e independientes dependiendo de lo que se requiera (por funcionalidad), por ejemplo un metodo para inicializar un step, configurarlo(textos, colores, iconos), identificar el step actual, asociar a un step el stepper al que pertenece, entre otros.
+- Contratos separados e independientes dependiendo del workflow definido, por ejemplo, metodos para inicializar el stepper, configurar/construir(textos, colores, iconos) los steps, identificar el step actual, agregar un step a la vista/contenedor que mantiene los steps, entre otros.
 
-- Listeners para responder a los eventos del usuario.
+- Listeners para responder a los eventos que genere el usuario.
 
-- Callbacks para la interaccion entre el stepper y los steps que contenga.
+- Callbacks para la interacción/llamados entre el stepper,los steps y logica de negocio.
 
-- Factories para administrar la creacion de los tipos de steps, acorde a parametrizaciones de entrada.
+- Factories para administrar la creación de los tipos de steps, acorde a parametrizaciones de entrada.
 
-- Los recursos base deben ser configurables y reemplazables tales como titulos, iconos, labels, botones, estilos y temas de cada componente.
+- Los recursos base(por defecto) deben ser configurables y reemplazables, tales como titulos, iconos, labels, botones, estilos y temas de cada parte/componente, para asi adecuarlo acorde se requiera.
 
 
 CLASES:
 Para los siguientes componentes del stepper:
 
-- Layout principal el cual va a reunir todas las partes del stepper.
+- Layout principal el cual va a contener/reunir todas las partes del stepper.
 
-- ViewPager el cual permite la interacción con los distintos steps que se configuren, proveidos por un PageAdapter. El ViewPager debe estar contenido dentro del Layout principal.
+- ViewPager el cual permite la interacción con los distintos steps que se configuren, proveidos por un PageAdapter. El ViewPager esta contenido dentro del Layout principal.
 
 - PagerAdapter el cual contiene los steps a ser icluidos dentro del ViewPager. Este elemento puede ser de tipo FragmentPageAdapter o FragmentStatePagerAdapter.
 
 - TabLayout el cual se le configura al ViewPager para saber como mostrar/organizar los steps.
 
-- Tipos de steps (editables, no editables, moviles, opcionales) basados en fragmentos o custom views. Dependiendo del tipo de step, se deben considerar los elementos que los caracterizan, por ejemplo en un step opcional, debe indicarse al usuario que éste es opcional, como tambien la lógica para que sea resuelto o no.
+- Tipos de steps (editables, no editables, moviles, opcionales) basados en fragmentos o custom views. Dependiendo del tipo de step, se deben considerar los elementos que los caracterizan, por ejemplo en un step opcional debe indicarse visualmente al usuario que éste es opcional, como tambien la lógica necesaria para que esta caracteristica sea manejada.
 
 - Factories
 
 - Interfaces para los listeners, callbacks y definiciones de negocio entre stepper y steps.
 
-- Builder con los metodos necesarios para modificar las caracteristicas base de los recursos de cada parte del stepper.
+- Builder con los metodos necesarios para crear componentes y modificar las caracteristicas base de los recursos de cada parte del stepper.
 
 
 LAYOUTS:
-Cada parte del stepper debería estar contenido/compuesto por un layout:
+Cada parte del stepper debe estar contenido/compuesto por un layout:
 
 - Layout principal como contenedor de todo el stepper.
 
 - ViewPager con un TabLayout para organizar los steps que se inserten en el PagerAdapter.
 
-- Layout base para representar cada step (fragmento o custom view padre). Los tipos de step heredan de éste y se adicionan sus elementos unicos. Contiene TextViews, buttons, FABs, labels, otros Layouts, entre otros
+- Layout base para representar cada step (fragmento o custom view padre). Los tipos de step heredan de éste y se adicionan sus elementos unicos. Contiene TextViews, buttons, FABs, labels, otros Layouts, entre otros.
 
 - Layout para el indicador de progreso (dots, progress bar...) dependiendo del tipo de step.
 
 
 RECURSOS:
-Se puede emplear un tema por defecto sobre la aplicación para que luego sea personalizado acorde a los requerimientos:
+Se puede emplear un tema por defecto sobre el stepper para que luego sea personalizado acorde a los requerimientos:
 
-- Drawable de circunferencias para los estados de los steps.
-
-- Iconos para representar el estado actual del step.
+- Drawables circulares de distintos colores e iconos para representar los estados de los steps.
 
 - Iconos/vectores de flechas para los botones de siguiente, atrás...
 
-- Tener en cuenta las medidas sugeridas por la guia de diseño para las margenes, padding, ancho, alto, tamaños de texto, alineaciones y buscar que se cumpla una simetria y orden con los elementos graficos del stepper.
+- Fuentes de texto con distintos tamaños por defecto, aplicados a los textView dependiendo su tipo(titulo, subtitulo, parrafo, entre otros).
+
+- Tener en cuenta las medidas sugeridas por la guia de diseño para las margenes, padding, ancho, alto, tamaños de texto, alineaciones y buscar que se cumpla una simetría y orden entre todos los elementos.
+
+- El tema por defecto que se use, está conformado por distintos estilos configurados dependiendo del componente al que vayan a ser aplicados, por ejemplo un estilo para los titulos, otro para los botones... Esto se requiere ya que cada componente tiene propiedades que no comparte con los démas, a la vez, cuando se vaya a personalizar el componente, se hereda su estilo y se realizan los cambios requeridos.
