@@ -49,8 +49,6 @@ Cada parte del stepper debe estar contenido/compuesto por un layout:
 
 - Layout base para representar cada step (fragmento o custom view padre). Los tipos de step heredan de éste y se adicionan sus elementos unicos. Contiene TextViews, buttons, FABs, labels, otros Layouts, entre otros.
 
-- Layout para el indicador de progreso (dots, progress bar...) dependiendo del tipo de step.
-
 
 RECURSOS:
 Se puede emplear un tema por defecto sobre el stepper para que luego sea personalizado acorde a los requerimientos:
