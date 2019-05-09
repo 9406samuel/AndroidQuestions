@@ -29,7 +29,7 @@ Para los siguientes componentes del stepper:
 
 - PagerAdapter el cual contiene los steps a ser icluidos dentro del ViewPager. Este elemento puede ser de tipo FragmentPageAdapter o FragmentStatePagerAdapter.
 
-- TabLayout el cual se le configura al ViewPager para saber como mostrar/organizar los steps.
+- TabLayout al cual se le configura un ViewPager para mostrar/organizar los steps.
 
 - Tipos de steps (editables, no editables, moviles, opcionales) basados en fragmentos o custom views. Dependiendo del tipo de step, se deben considerar los elementos que los caracterizan, por ejemplo en un step opcional debe indicarse visualmente al usuario que éste es opcional, como tambien la lógica necesaria para que esta caracteristica sea manejada.
 
