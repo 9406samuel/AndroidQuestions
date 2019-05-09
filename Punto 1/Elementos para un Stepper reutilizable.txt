@@ -45,7 +45,7 @@ Cada parte del stepper debe estar contenido/compuesto por un layout:
 
 - Layout principal como contenedor de todo el stepper.
 
-- ViewPager con un TabLayout para organizar los steps que se inserten en el PagerAdapter.
+- TabLayout con un ViewPager para mostrar los steps que se inserten en el PagerAdapter.
 
 - Layout base para representar cada step (fragmento o custom view padre). Los tipos de step heredan de éste y se adicionan sus elementos unicos. Contiene TextViews, buttons, FABs, labels, otros Layouts, entre otros.
 
